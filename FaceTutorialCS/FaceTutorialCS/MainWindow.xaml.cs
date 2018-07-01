@@ -79,7 +79,8 @@ namespace FaceTutorial
                 drawingContext.DrawImage(bitmapSource,
                     new Rect(0, 0, bitmapSource.Width, bitmapSource.Height));
                 double dpi = bitmapSource.DpiX;
-                resizeFactor = 96 / dpi;
+                // Some images don't contain dpi info.
+                resizeFactor = (dpi == 0) ? 1 : 96 / dpi;
                 faceDescriptions = new String[faces.Length];
 
                 for (int i = 0; i < faces.Length; ++i)
