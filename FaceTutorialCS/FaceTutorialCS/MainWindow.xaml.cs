@@ -19,18 +19,21 @@ namespace FaceTutorial
         //
         // Replace or verify the region in the second parameter.
         //
-        // You must use the same region in your REST API call as you used to obtain your subscription keys.
-        // For example, if you obtained your subscription keys from the westus region, replace
-        // "westcentralus" in the URI below with "westus".
+        // You must use the same region in your REST API call as you used to
+        // obtain your subscription keys. For example, if you obtained your
+        // subscription keys from the westus region, replace "westcentralus"
+        // in the URI below with "westus".
         //
-        // NOTE: Free trial subscription keys are generated in the westcentralus region, so if you are using
-        // a free trial subscription key, you should not need to change this region.
+        // NOTE: Free trial subscription keys are generated in the westcentralus
+        // region, so if you are using a free trial subscription key, you should
+        // not need to change this region.
         private readonly IFaceServiceClient faceServiceClient =
-            new FaceServiceClient("<Subscription Key>", "https://westcentralus.api.cognitive.microsoft.com/face/v1.0");
+            new FaceServiceClient("<Subscription Key>",
+                "https://westcentralus.api.cognitive.microsoft.com/face/v1.0");
 
-        Face[] faces;                   // The list of detected faces.
-        String[] faceDescriptions;      // The list of descriptions for the detected faces.
-        double resizeFactor;            // The resize factor for the displayed image.
+        Face[] faces;              // The list of detected faces.
+        String[] faceDescriptions; // The list of descriptions for the detected faces.
+        double resizeFactor;       // The resize factor for the displayed image.
 
         public MainWindow()
         {
@@ -69,7 +72,8 @@ namespace FaceTutorial
             // Detect any faces in the image.
             Title = "Detecting...";
             faces = await UploadAndDetectFaces(filePath);
-            Title = String.Format("Detection Finished. {0} face(s) detected", faces.Length);
+            Title = String.Format(
+                "Detection Finished. {0} face(s) detected", faces.Length);
 
             if (faces.Length > 0)
             {
@@ -117,7 +121,8 @@ namespace FaceTutorial
                 FacePhoto.Source = faceWithRectBitmap;
 
                 // Set the status bar text.
-                faceDescriptionStatusBar.Text = "Place the mouse pointer over a face to see the face description.";
+                faceDescriptionStatusBar.Text =
+                    "Place the mouse pointer over a face to see the face description.";
             }
         }
 
@@ -136,7 +141,8 @@ namespace FaceTutorial
             BitmapSource bitmapSource = (BitmapSource)imageSource;
 
             // Scale adjustment between the actual size and displayed size.
-            var scale = FacePhoto.ActualWidth / (bitmapSource.PixelWidth / resizeFactor);
+            var scale =
+                FacePhoto.ActualWidth / (bitmapSource.PixelWidth / resizeFactor);
 
             // Check if this mouse position is over a face rectangle.
             bool mouseOverFace = false;
@@ -149,8 +155,10 @@ namespace FaceTutorial
                 double width = fr.Width * scale;
                 double height = fr.Height * scale;
 
-                // Display the face description for this face if the mouse is over this face rectangle.
-                if (mouseXY.X >= left && mouseXY.X <= left + width && mouseXY.Y >= top && mouseXY.Y <= top + height)
+                // Display the face description for this face if
+                // the mouse is over this face rectangle.
+                if (mouseXY.X >= left && mouseXY.X <= left +
+                    width && mouseXY.Y >= top && mouseXY.Y <= top + height)
                 {
                     faceDescriptionStatusBar.Text = faceDescriptions[i];
                     mouseOverFace = true;
@@ -160,7 +168,8 @@ namespace FaceTutorial
 
             // If the mouse is not over a face rectangle.
             if (!mouseOverFace)
-                faceDescriptionStatusBar.Text = "Place the mouse pointer over a face to see the face description.";
+                faceDescriptionStatusBar.Text =
+                    "Place the mouse pointer over a face to see the face description.";
         }
 
         // Uploads the image file and calls Detect Faces.
@@ -168,15 +177,22 @@ namespace FaceTutorial
         private async Task<Face[]> UploadAndDetectFaces(string imageFilePath)
         {
             // The list of Face attributes to return.
-            IEnumerable<FaceAttributeType> faceAttributes =
-                new FaceAttributeType[] { FaceAttributeType.Gender, FaceAttributeType.Age, FaceAttributeType.Smile, FaceAttributeType.Emotion, FaceAttributeType.Glasses, FaceAttributeType.Hair };
+            IEnumerable<FaceAttributeType> faceAttributes = new FaceAttributeType[]
+                { FaceAttributeType.Gender, FaceAttributeType.Age,
+                  FaceAttributeType.Smile, FaceAttributeType.Emotion,
+                  FaceAttributeType.Glasses, FaceAttributeType.Hair
+                };
 
             // Call the Face API.
             try
             {
                 using (Stream imageFileStream = File.OpenRead(imageFilePath))
                 {
-                    Face[] faces = await faceServiceClient.DetectAsync(imageFileStream, returnFaceId: true, returnFaceLandmarks: false, returnFaceAttributes: faceAttributes);
+                    Face[] faces = await faceServiceClient.DetectAsync(
+                        imageFileStream,
+                        returnFaceId: true,
+                        returnFaceLandmarks: false, 
+                        returnFaceAttributes: faceAttributes);
                     return faces;
                 }
             }
@@ -207,19 +223,28 @@ namespace FaceTutorial
             sb.Append(", ");
             sb.Append(face.FaceAttributes.Age);
             sb.Append(", ");
-            sb.Append(String.Format("smile {0:F1}%, ", face.FaceAttributes.Smile * 100));
+            sb.Append(String.Format("smile {0:F1}%, ",
+                face.FaceAttributes.Smile * 100));
 
             // Add the emotions. Display all emotions over 10%.
             sb.Append("Emotion: ");
             EmotionScores emotionScores = face.FaceAttributes.Emotion;
-            if (emotionScores.Anger >= 0.1f) sb.Append(String.Format("anger {0:F1}%, ", emotionScores.Anger * 100));
-            if (emotionScores.Contempt >= 0.1f) sb.Append(String.Format("contempt {0:F1}%, ", emotionScores.Contempt * 100));
-            if (emotionScores.Disgust >= 0.1f) sb.Append(String.Format("disgust {0:F1}%, ", emotionScores.Disgust * 100));
-            if (emotionScores.Fear >= 0.1f) sb.Append(String.Format("fear {0:F1}%, ", emotionScores.Fear * 100));
-            if (emotionScores.Happiness >= 0.1f) sb.Append(String.Format("happiness {0:F1}%, ", emotionScores.Happiness * 100));
-            if (emotionScores.Neutral >= 0.1f) sb.Append(String.Format("neutral {0:F1}%, ", emotionScores.Neutral * 100));
-            if (emotionScores.Sadness >= 0.1f) sb.Append(String.Format("sadness {0:F1}%, ", emotionScores.Sadness * 100));
-            if (emotionScores.Surprise >= 0.1f) sb.Append(String.Format("surprise {0:F1}%, ", emotionScores.Surprise * 100));
+            if (emotionScores.Anger >= 0.1f) sb.Append(
+                String.Format("anger {0:F1}%, ", emotionScores.Anger * 100));
+            if (emotionScores.Contempt >= 0.1f) sb.Append(
+                String.Format("contempt {0:F1}%, ", emotionScores.Contempt * 100));
+            if (emotionScores.Disgust >= 0.1f) sb.Append(
+                String.Format("disgust {0:F1}%, ", emotionScores.Disgust * 100));
+            if (emotionScores.Fear >= 0.1f) sb.Append(
+                String.Format("fear {0:F1}%, ", emotionScores.Fear * 100));
+            if (emotionScores.Happiness >= 0.1f) sb.Append(
+                String.Format("happiness {0:F1}%, ", emotionScores.Happiness * 100));
+            if (emotionScores.Neutral >= 0.1f) sb.Append(
+                String.Format("neutral {0:F1}%, ", emotionScores.Neutral * 100));
+            if (emotionScores.Sadness >= 0.1f) sb.Append(
+                String.Format("sadness {0:F1}%, ", emotionScores.Sadness * 100));
+            if (emotionScores.Surprise >= 0.1f) sb.Append(
+                String.Format("surprise {0:F1}%, ", emotionScores.Surprise * 100));
 
             // Add glasses.
             sb.Append(face.FaceAttributes.Glasses);
@@ -230,7 +255,8 @@ namespace FaceTutorial
 
             // Display baldness confidence if over 1%.
             if (face.FaceAttributes.Hair.Bald >= 0.01f)
-                sb.Append(String.Format("bald {0:F1}% ", face.FaceAttributes.Hair.Bald * 100));
+                sb.Append(String.Format(
+                    "bald {0:F1}% ", face.FaceAttributes.Hair.Bald * 100));
 
             // Display all hair color attributes over 10%.
             HairColor[] hairColors = face.FaceAttributes.Hair.HairColor;
