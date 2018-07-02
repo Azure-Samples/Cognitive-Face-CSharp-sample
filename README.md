@@ -1,6 +1,6 @@
 # Microsoft Cognitive Services - Face Service Tutorial Sample
 
-This repository contains the sample showcased in [Getting Started with Face API in C# Tutorial](https://docs.microsoft.com/en-us/azure/cognitive-services/face/tutorials/faceapiincsharptutorial#fullsource). The uses the Windows client library for the Cognitive Services Face service.
+This repository contains the sample showcased in [Getting Started with Face API in C# Tutorial](https://docs.microsoft.com/en-us/azure/cognitive-services/face/tutorials/faceapiincsharptutorial#fullsource). The sample uses the Windows client library for the Cognitive Services Face service.
 
 ## Features
 
