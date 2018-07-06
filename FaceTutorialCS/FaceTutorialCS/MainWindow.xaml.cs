@@ -191,6 +191,8 @@ namespace FaceTutorial
             {
                 using (Stream imageFileStream = File.OpenRead(imageFilePath))
                 {
+                    // The second argument specifies to return the faceId, while
+                    // the third argument specifies not to return face landmarks.
                     IList<DetectedFace> faceList = await faceAPI.Face.DetectWithStreamAsync(
                         imageFileStream, true, false, faceAttributes);
                     return faceList;
