@@ -19,7 +19,19 @@ namespace FaceTutorial
         // subscriptionKey = "0123456789abcdef0123456789ABCDEF"
         private const string subscriptionKey = "<SubscriptionKey>";
 
-        private readonly IFaceAPI faceAPI = new FaceAPI(
+        // Replace or verify the region.
+        //
+        // You must use the same region as you used to obtain your subscription
+        // keys. For example, if you obtained your subscription keys from the
+        // westus region, replace "Westcentralus" with "Westus".
+        //
+        // NOTE: Free trial subscription keys are generated in the westcentralus
+        // region, so if you are using a free trial subscription key, you should
+        // not need to change this region.
+        private const string baseUri =
+            "https://westcentralus.api.cognitive.microsoft.com/face/v1.0";
+
+        private readonly IFaceClient faceAPI = new FaceClient(
             new ApiKeyServiceClientCredentials(subscriptionKey),
             new System.Net.Http.DelegatingHandler[] { });
 
@@ -37,16 +49,16 @@ namespace FaceTutorial
         {
             InitializeComponent();
 
-            // Replace or verify the region.
-            //
-            // You must use the same region as you used to obtain your subscription
-            // keys. For example, if you obtained your subscription keys from the
-            // westus region, replace "Westcentralus" with "Westus".
-            //
-            // NOTE: Free trial subscription keys are generated in the westcentralus
-            // region, so if you are using a free trial subscription key, you should
-            // not need to change this region.
-            faceAPI.AzureRegion = AzureRegions.Westcentralus;
+            if (Uri.IsWellFormedUriString(baseUri, UriKind.Absolute))
+            {
+                faceAPI.BaseUri = new Uri(baseUri);
+            }
+            else
+            {
+                MessageBox.Show(baseUri,
+                    "Invalid URI", MessageBoxButton.OK, MessageBoxImage.Error);
+                Environment.Exit(0);
+            }
         }
 
         // Displays the image and calls UploadAndDetectFaces.
