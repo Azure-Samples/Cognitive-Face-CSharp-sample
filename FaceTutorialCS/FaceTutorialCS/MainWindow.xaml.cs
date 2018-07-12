@@ -16,7 +16,7 @@ namespace FaceTutorial
     public partial class MainWindow : Window
     {
         // Replace <SubscriptionKey> with your valid subscription key.
-        // subscriptionKey = "0123456789abcdef0123456789ABCDEF"
+        // For example, subscriptionKey = "0123456789abcdef0123456789ABCDEF"
         private const string subscriptionKey = "<SubscriptionKey>";
 
         // Replace or verify the region.
@@ -31,7 +31,7 @@ namespace FaceTutorial
         private const string baseUri =
             "https://westcentralus.api.cognitive.microsoft.com/face/v1.0";
 
-        private readonly IFaceClient faceAPI = new FaceClient(
+        private readonly IFaceClient faceClient = new FaceClient(
             new ApiKeyServiceClientCredentials(subscriptionKey),
             new System.Net.Http.DelegatingHandler[] { });
 
@@ -51,7 +51,7 @@ namespace FaceTutorial
 
             if (Uri.IsWellFormedUriString(baseUri, UriKind.Absolute))
             {
-                faceAPI.BaseUri = new Uri(baseUri);
+                faceClient.BaseUri = new Uri(baseUri);
             }
             else
             {
@@ -205,8 +205,9 @@ namespace FaceTutorial
                 {
                     // The second argument specifies to return the faceId, while
                     // the third argument specifies not to return face landmarks.
-                    IList<DetectedFace> faceList = await faceAPI.Face.DetectWithStreamAsync(
-                        imageFileStream, true, false, faceAttributes);
+                    IList<DetectedFace> faceList =
+                        await faceClient.Face.DetectWithStreamAsync(
+                            imageFileStream, true, false, faceAttributes);
                     return faceList;
                 }
             }
