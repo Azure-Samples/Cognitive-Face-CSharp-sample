@@ -20,14 +20,14 @@ See [Getting Started with Face API in C# Tutorial](https://docs.microsoft.com/en
 
 - You need a subscription key to run the sample. You can get free trial subscription keys from [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api).
 - Any edition of [Visual Studio 2015 or 2017](https://www.visualstudio.com/downloads/).
-- The [Microsoft.Azure.CognitiveServices.Vision.Face 1.0.2-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/1.0.2-preview) client library NuGet package.
+- The [Microsoft.Azure.CognitiveServices.Vision.Face 2.0.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.0.0-preview) client library NuGet package.
 
 ### Quickstart
 
 - Clone or download the repository.
 - Navigate to the *FaceTutorialCS* folder.
 - Double-click the *FaceTutorialCS.sln* file, which opens Visual Studio.
-- Install the [Microsoft.Azure.CognitiveServices.Vision.Face 1.0.2-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/1.0.2-preview) NuGet package.
+- Install the [Microsoft.Azure.CognitiveServices.Vision.Face 2.0.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.0.0-preview) NuGet package.
 - Run the program.
 
 ## Resources
