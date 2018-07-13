@@ -6,7 +6,7 @@ author: noellelacharite
 
 # Face service tutorial - detect and frame faces in an image
 
-This repository contains the sample showcased in [Getting Started with Face API in C# Tutorial](https://docs.microsoft.com/en-us/azure/cognitive-services/face/tutorials/faceapiincsharptutorial). The sample uses the Windows client library for the Cognitive Services Face service.
+This repository contains the sample discussed in [Getting Started with Face API in C# Tutorial](https://docs.microsoft.com/en-us/azure/cognitive-services/face/tutorials/faceapiincsharptutorial). The sample uses the Windows client library for the Cognitive Services Face service.
 
 ## Features
 
@@ -18,13 +18,15 @@ This project provides the following features:
 
 ![GettingStartCSharpScreenshot](https://docs.microsoft.com/en-us/azure/cognitive-services/face/images/getting-started-cs-detected.png)
 
-## Prerequisites
+## Getting Started
+
+### Prerequisites
 
 - You need a subscription key to run the sample. You can get free trial subscription keys from [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api).
 - Any edition of [Visual Studio 2015 or 2017](https://www.visualstudio.com/downloads/). For Visual Studio 2017, the .NET Desktop application development workload is required.
 - The [Microsoft.Azure.CognitiveServices.Vision.Face 2.0.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.0.0-preview) client library NuGet package. Download not necessary.
 
-## Quickstart
+### Quickstart
 
 1. Clone or download the repository.
 1. Open the *FaceTutorialCS* folder in the repository.
