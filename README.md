@@ -1,6 +1,6 @@
 ---
 services: cognitive-services, face
-platforms: android, java
+platforms: c#
 author: noellelacharite
 ---
 
