@@ -13,7 +13,7 @@
 *Breaking Changes*
 
 * IFaceAPI -> IFaceClient
-* faceAPI.AzureRegion = AzureRegions.Westcentralus -> faceAPI.BaseUri = new Uri(baseUri)
+* faceAPI.AzureRegion = AzureRegions.Westcentralus -> faceClient.BaseUri = new Uri(baseUri)
 
 # 1.0.2 (2018-07-02)
 
