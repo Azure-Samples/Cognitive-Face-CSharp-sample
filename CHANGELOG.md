@@ -1,4 +1,19 @@
-## Microsoft Cognitive Services - Face Service Tutorial Sample Changelog
+## Face service tutorial changelog
+
+# 2.0.0 (2018-07-12)
+
+*Features*
+
+* Updated to target [Microsoft.Azure.CognitiveServices.Vision.Face 2.0.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.0.0-preview) client library.
+
+*Bug Fixes*
+
+* none
+
+*Breaking Changes*
+
+* IFaceAPI -> IFaceClient
+* faceAPI.AzureRegion = AzureRegions.Westcentralus -> faceAPI.BaseUri = new Uri(baseUri)
 
 # 1.0.2 (2018-07-02)
 
@@ -25,7 +40,7 @@
 
 *Features*
 
-* Port of sample code from [Getting Started with Face API in C# Tutorial](https://docs.microsoft.com/en-us/azure/cognitive-services/face/tutorials/faceapiincsharptutorial#fullsource).
+* Import of sample code from [Getting Started with Face API in C# Tutorial](https://docs.microsoft.com/en-us/azure/cognitive-services/face/tutorials/faceapiincsharptutorial).
 * Targets [Microsoft.ProjectOxford.Face 1.3.0](https://www.nuget.org/packages/Microsoft.ProjectOxford.Face/) client library (works with v1.4.0).
 
 *Bug Fixes*
