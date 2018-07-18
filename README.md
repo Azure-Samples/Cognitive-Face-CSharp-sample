@@ -4,7 +4,7 @@ platforms: c#
 author: noellelacharite
 ---
 
-# Face service tutorial - detect and frame faces in an image
+# Detect and frame faces in an image on Windows
 
 This repository contains the sample discussed in [Getting Started with Face API in C# Tutorial](https://docs.microsoft.com/en-us/azure/cognitive-services/face/tutorials/faceapiincsharptutorial). The sample uses the Windows client library for the Cognitive Services Face service.
 
