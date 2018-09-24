@@ -6,7 +6,7 @@ author: noellelacharite
 
 # Detect and frame faces in an image on Windows
 
-This repository contains the sample discussed in [Getting Started with Face API in C# Tutorial](https://docs.microsoft.com/en-us/azure/cognitive-services/face/tutorials/faceapiincsharptutorial). The sample uses the Windows client library for the Cognitive Services Face service.
+This repository contains the sample discussed in [Create a WPF app to detect and frame faces in an image](https://docs.microsoft.com/en-us/azure/cognitive-services/face/tutorials/faceapiincsharptutorial). The sample uses the Windows client library for the Cognitive Services Face service.
 
 ## Features
 
@@ -24,7 +24,7 @@ This project provides the following features:
 
 - You need a subscription key to run the sample. You can get free trial subscription keys from [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api).
 - Any edition of [Visual Studio 2015 or 2017](https://www.visualstudio.com/downloads/). For Visual Studio 2017, the .NET Desktop application development workload is required.
-- The [Microsoft.Azure.CognitiveServices.Vision.Face 2.0.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.0.0-preview) client library NuGet package. Download not necessary.
+- The [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview) client library NuGet package. Download not necessary.
 
 ### Quickstart
 
@@ -33,7 +33,7 @@ This project provides the following features:
 1. Double-click the *FaceTutorialCS.sln* file, which opens in Visual Studio.
 1. Expand *MainWindow.xaml*, then open *MainWindow.xaml.cs*.
 1. Replace `<SubscriptionKey>` with your valid subscription key.
-1. Replace or verify the Azure region (`baseUri`) associated with your key.
+1. Replace or verify the Azure region (`faceEndpoint`) associated with your key.
 1. Build the project, which installs the Face service NuGet package.
 1. Run the program.
 1. Browse and select an image containing faces.
