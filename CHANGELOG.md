@@ -1,6 +1,20 @@
 ## Face service tutorial changelog
 
-# 2.0.0 (2018-07-12)
+# 2.2.0 (2018-08-03)
+
+*Features*
+
+* Updated to target [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview) client library.
+
+*Bug Fixes*
+
+* none
+
+*Breaking Changes*
+
+* faceClient.BaseUri = new Uri(baseUri) -> faceClient.Endpoint = faceEndpoint
+
+# 2.0.0 (2018-07-09)
 
 *Features*
 
