@@ -15,21 +15,10 @@ namespace FaceTutorial
 {
     public partial class MainWindow : Window
     {
-        // Replace <SubscriptionKey> with your valid subscription key.
-        // For example, subscriptionKey = "0123456789abcdef0123456789ABCDEF"
-        private const string subscriptionKey = "<SubscriptionKey>";
-
-        // Replace or verify the region.
-        //
-        // You must use the same region as you used to obtain your subscription
-        // keys. For example, if you obtained your subscription keys from the
-        // westus region, replace "Westcentralus" with "Westus".
-        //
-        // NOTE: Free trial subscription keys are generated in the westcentralus
-        // region, so if you are using a free trial subscription key, you should
-        // not need to change this region.
-        private const string faceEndpoint =
-            "https://westcentralus.api.cognitive.microsoft.com";
+        // Add your Face subscription key to your environment variables.
+        private const string subscriptionKey = Environment.GetEnvironmentVariable("FACE_SUBSCRIPTION_KEY");
+        // Add your Face endpoint to your environment variables.
+        private const string faceEndpoint = Environment.GetEnvironmentVariable("FACE_ENDPOINT");
 
         private readonly IFaceClient faceClient = new FaceClient(
             new ApiKeyServiceClientCredentials(subscriptionKey),
