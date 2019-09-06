@@ -1,3 +1,4 @@
+// <snippet_using>
 using Microsoft.Azure.CognitiveServices.Vision.Face;
 using Microsoft.Azure.CognitiveServices.Vision.Face.Models;
 
@@ -10,11 +11,13 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+// </snippet_using>
 
 namespace FaceTutorial
 {
     public partial class MainWindow : Window
     {
+        // <snippet_mainwindow_fields>
         // Add your Face subscription key to your environment variables.
         private const string subscriptionKey = Environment.GetEnvironmentVariable("FACE_SUBSCRIPTION_KEY");
         // Add your Face endpoint to your environment variables.
@@ -33,7 +36,9 @@ namespace FaceTutorial
 
         private const string defaultStatusBarText =
             "Place the mouse pointer over a face to see the face description.";
+        // </snippet_mainwindow_fields>
 
+        // <snippet_mainwindow_constructor>
         public MainWindow()
         {
             InitializeComponent();
@@ -49,7 +54,9 @@ namespace FaceTutorial
                 Environment.Exit(0);
             }
         }
+        // </snippet_mainwindow_constructor>
 
+        // <snippet_browsebuttonclick_start>
         // Displays the image and calls UploadAndDetectFaces.
         private async void BrowseButton_Click(object sender, RoutedEventArgs e)
         {
@@ -77,7 +84,9 @@ namespace FaceTutorial
             bitmapSource.EndInit();
 
             FacePhoto.Source = bitmapSource;
+            // </snippet_browsebuttonclick_start>
 
+            // <snippet_browsebuttonclick_mid>
             // Detect any faces in the image.
             Title = "Detecting...";
             faceList = await UploadAndDetectFaces(filePath);
@@ -132,11 +141,18 @@ namespace FaceTutorial
                 // Set the status bar text.
                 faceDescriptionStatusBar.Text = defaultStatusBarText;
             }
+            // </snippet_browsebuttonclick_mid>
+        // <snippet_browsebuttonclick_end>
         }
+        // </snippet_browsebuttonclick_end>
 
+        // <snippet_mousemove_start>
         // Displays the face description when the mouse is over a face rectangle.
         private void FacePhoto_MouseMove(object sender, MouseEventArgs e)
         {
+            // </snippet_mousemove_start>
+
+            // <snippet_mousemove_mid>
             // If the REST call has not completed, return.
             if (faceList == null)
                 return;
@@ -173,8 +189,12 @@ namespace FaceTutorial
 
             // String to display when the mouse is not over a face rectangle.
             if (!mouseOverFace) faceDescriptionStatusBar.Text = defaultStatusBarText;
+            // </snippet_mousemove_mid>
+        // <snippet_mousemove_end>
         }
+        // </snippet_mousemove_end>
 
+        // <snippet_uploaddetect>
         // Uploads the image file and calls DetectWithStreamAsync.
         private async Task<IList<DetectedFace>> UploadAndDetectFaces(string imageFilePath)
         {
@@ -213,7 +233,9 @@ namespace FaceTutorial
                 return new List<DetectedFace>();
             }
         }
+        // </snippet_uploaddetect>
 
+        // <snippet_facedesc>
         // Creates a string out of the attributes describing the face.
         private string FaceDescription(DetectedFace face)
         {
@@ -273,5 +295,6 @@ namespace FaceTutorial
             // Return the built string.
             return sb.ToString();
         }
+        // </snippet_facedesc>
     }
 }
