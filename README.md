@@ -1,7 +1,11 @@
 ---
-services: cognitive-services, face
-platforms: c#
-author: noellelacharite
+page_type: sample
+languages:
+- csharp
+products:
+- azure
+description: "This repository contains the sample discussed in Create a WPF app to detect and frame faces in an image."
+urlFragment: Cognitive-Face-CSharp-sample
 ---
 
 # Detect and frame faces in an image on Windows
