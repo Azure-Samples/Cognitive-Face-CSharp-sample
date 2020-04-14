@@ -19,9 +19,9 @@ namespace FaceTutorial
     {
         // <snippet_mainwindow_fields>
         // Add your Face subscription key to your environment variables.
-        private const string subscriptionKey = Environment.GetEnvironmentVariable("FACE_SUBSCRIPTION_KEY");
+        private static readonly string subscriptionKey = Environment.GetEnvironmentVariable("FACE_SUBSCRIPTION_KEY");
         // Add your Face endpoint to your environment variables.
-        private const string faceEndpoint = Environment.GetEnvironmentVariable("FACE_ENDPOINT");
+        private static readonly string faceEndpoint = Environment.GetEnvironmentVariable("FACE_ENDPOINT");
 
         private readonly IFaceClient faceClient = new FaceClient(
             new ApiKeyServiceClientCredentials(subscriptionKey),
