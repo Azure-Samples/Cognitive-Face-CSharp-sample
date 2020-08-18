@@ -19,9 +19,9 @@ namespace FaceTutorial
     {
         // <snippet_mainwindow_fields>
         // Add your Face subscription key to your environment variables.
-        private const string subscriptionKey = Environment.GetEnvironmentVariable("FACE_SUBSCRIPTION_KEY");
+        private static string subscriptionKey = Environment.GetEnvironmentVariable("FACE_SUBSCRIPTION_KEY");
         // Add your Face endpoint to your environment variables.
-        private const string faceEndpoint = Environment.GetEnvironmentVariable("FACE_ENDPOINT");
+        private static string faceEndpoint = Environment.GetEnvironmentVariable("FACE_ENDPOINT");
 
         private readonly IFaceClient faceClient = new FaceClient(
             new ApiKeyServiceClientCredentials(subscriptionKey),
@@ -199,8 +199,8 @@ namespace FaceTutorial
         private async Task<IList<DetectedFace>> UploadAndDetectFaces(string imageFilePath)
         {
             // The list of Face attributes to return.
-            IList<FaceAttributeType> faceAttributes =
-                new FaceAttributeType[]
+            IList<FaceAttributeType?> faceAttributes =
+                new FaceAttributeType?[]
                 {
                     FaceAttributeType.Gender, FaceAttributeType.Age,
                     FaceAttributeType.Smile, FaceAttributeType.Emotion,
