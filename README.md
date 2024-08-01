@@ -10,6 +10,9 @@ urlFragment: Cognitive-Face-CSharp-sample
 
 # Detect and frame faces in an image on Windows
 
+> **Note:**
+> This repository has been archived. Please visit [aka.ms/FaceSamples](https://aka.ms/FaceSamples) to get started with the latest Face SDK samples.
+
 This repository contains the sample discussed in [Create a WPF app to detect and frame faces in an image](https://docs.microsoft.com/en-us/azure/cognitive-services/face/tutorials/faceapiincsharptutorial). The sample uses the Windows client library for the Cognitive Services Face service.
 
 ## Features
